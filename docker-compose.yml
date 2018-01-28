@@ -1,0 +1,20 @@
+version: '2'
+services:
+  input:
+    build:
+      context: input/
+      dockerfile: Dockerfile
+    ports:
+     - "5555:5555"
+    volumes:
+     - "data:/var/data/"
+  stats:
+    build:
+      context: stats/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - "data:/var/data/:ro"
+volumes:
+  data:
